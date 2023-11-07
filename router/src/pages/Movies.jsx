@@ -1,18 +1,11 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
 
 const Movies = () => {
   return (
     <section>
-        <h3> Filmy </h3>
-        <ul>
-            <li> <Link to="/"> Domov </Link> </li>
-            <li> Filmy </li>
-            <li> <Link to="/serials"> Serialy </Link> </li>
-        </ul>
-
+      <h3> Filmy </h3>
     </section>
-  )
-}
+  );
+};
 
-export default Movies
+export default Movies;

@@ -1,19 +1,11 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
 
 const Serials = () => {
   return (
     <section>
-    <h3> Serialy </h3>
-    <ul>
-        <li> <Link to="/"> Domov </Link> </li>
-        <li> <Link to="/movies"> Filmy </Link> </li>
-        <li> Serialy </li>
-    </ul>
+      <h3> Serialy </h3>
+    </section>
+  );
+};
 
-
-</section>
-  )
-}
-
-export default Serials
+export default Serials;
