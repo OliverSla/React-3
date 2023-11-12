@@ -6,12 +6,10 @@ const App = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    db.collection("movies")
-      .get()
-      .then((snapshot) => {
-        console.log(snapshot);
+   const unsubscribe = db.collection("movies").onSnapshot((snapshot) => {
         if (snapshot.empty) {
           setError("Žiadne filmy");
+          setData([])
         } else {
           let result = [];
           snapshot.docs.forEach((oneMovie) => {
@@ -19,23 +17,23 @@ const App = () => {
           });
           console.log(result);
           setData(result);
+          setError(false)
         }
+      }, (err) => {
+        setError(err.message)
       })
-      .catch((err) => {
-        setError(err.massage);
-      });
+
+      return () => {unsubscribe()}
+
   }, []);
 
-
-const deleteMovie = (id) => {
-   db.collection("movies").doc(id).delete(); 
-  const newData = data.filter((oneMovie) => oneMovie.id !== id)
-  setData(newData)
-}
+  const deleteMovie = (id) => {
+    db.collection("movies").doc(id).delete();
+  };
 
   return (
     <div className="all_movies_wrapper">
-      {error && <p>{error}</p>}
+      {error && <p className="error">{error}</p>}
       {data.map((oneMovie, index) => {
         return (
           <div className="movie_wrapper" key={oneMovie.id}>
@@ -43,7 +41,9 @@ const deleteMovie = (id) => {
             <h5>{oneMovie.minage}+</h5>
             <h1>{oneMovie.title}</h1>
             <h3>{oneMovie.time} min.</h3>
-            <button onClick={() => deleteMovie(oneMovie.id)}>Zmazať film</button>
+            <button onClick={() => deleteMovie(oneMovie.id)}>
+              Zmazať film
+            </button>
           </div>
         );
       })}
