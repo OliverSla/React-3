@@ -20,7 +20,6 @@ const App = () => {
           snapshot.docs.forEach((oneMovie) => {
             result.push({ id: oneMovie.id, ...oneMovie.data() });
           });
-          console.log(result);
           setData(result);
           setError(false);
         }
