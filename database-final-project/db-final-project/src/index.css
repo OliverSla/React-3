@@ -14,3 +14,21 @@
 .movies{
   width: 100vw;
 }
+
+
+.oneMovie_wrapper{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background: black;
+  color: white;
+}
+
+.oneMovie{
+max-width: 300px;
+display: flex;
+flex-direction: column;
+}
