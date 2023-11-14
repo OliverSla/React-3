@@ -1,7 +1,39 @@
 
 
 header{
-    background: green;
+    padding: 0px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--prim-color);
     width: 100vw;
-    height: 100px;
+    height: 110px;
+}
+
+.logo_wrapper{
+    font-weight: 500;
+    font-size: 2.3em;
+    letter-spacing: 2px;
+    color: var(--sec-color);
+}
+
+.logo{
+    font-size: 1.2em;
+    font-weight: 400;
+    text-decoration: none;
+    list-style: none;
+    color: var(--sec-color);
+}
+
+nav a{
+    font-size: 1.3em;
+    margin-right: 16px;
+    font-weight: 200;
+    text-decoration: none;
+    list-style: none;
+    color: var(--sec-color);
+}
+
+nav a:hover{
+    color: rgb(170, 170, 170);
 }

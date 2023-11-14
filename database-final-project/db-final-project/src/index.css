@@ -4,3 +4,13 @@
   padding: 0;
   margin: 0;
 }
+
+:root{
+  --prim-color: rgb(43, 43, 43);
+  --sec-color: rgb(226, 226, 226);
+}
+
+
+.movies{
+  width: 100vw;
+}
