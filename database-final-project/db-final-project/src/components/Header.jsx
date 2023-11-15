@@ -9,6 +9,7 @@ const Header = () => {
         <nav>
             <NavLink to="/">Úvod</NavLink>
             <NavLink to="/allMovies">Filmy</NavLink>
+            <NavLink to="/form">Pridať film</NavLink>
         </nav>
     </header>
   )

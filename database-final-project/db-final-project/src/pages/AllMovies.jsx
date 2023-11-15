@@ -30,12 +30,12 @@ const AllMovies = () => {
   }, []);
 
   return (
-    <div className="movies">
+    <div className="wrapper">
       {error && <p>Nastala chyba, {error}</p>}
 
       {data.map((oneMovie) => {
         return (
-          <div key={oneMovie.id}>
+          <div className="movie_wrapper" key={oneMovie.id}>
             <h2>{oneMovie.title}</h2>
             <Link to={`/oneMovie/${oneMovie.id}`}>Zobraziť film</Link>
           </div>

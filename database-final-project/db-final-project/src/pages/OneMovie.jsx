@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../firebase/config";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const OneMovie = () => {
   const [data, setData] = useState({});
@@ -14,7 +15,7 @@ const OneMovie = () => {
       .get()
       .then((myDoc) => {
         if (myDoc.exists) {
-          setData(myDoc.data());
+          setData({ id: myDoc.id, ...myDoc.data() });
         } else {
           setError("Nenašiel sa film");
         }
@@ -24,14 +25,21 @@ const OneMovie = () => {
       });
   }, []);
 
+  const deleteMovie = (id) => {
+    db.collection("movies").doc(id).delete();
+  };
+
   return (
-    <div className="oneMovie_wrapper">
+    <div className="wrapper">
       {error && <p>{error}</p>}
       <div className="oneMovie">
         <h1>{data.title}</h1>
         <p>{data.text}</p>
         <h4>Minimálny vek: {data.minage}</h4>
         <h5>Čas: {data.time}</h5>
+        <button onClick={() => deleteMovie(data.id)}>
+          <Link to="/allmovies">Zmazať</Link>
+        </button>
       </div>
     </div>
   );
