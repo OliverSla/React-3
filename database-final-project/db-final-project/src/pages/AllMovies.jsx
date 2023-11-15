@@ -8,9 +8,8 @@ const AllMovies = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    db.collection("movies")
-      .get()
-      .then((snapshot) => {
+   const unsubscribe = db.collection("movies")
+      .onSnapshot((snapshot) => {
         if (snapshot.empty) {
           setError("Žiadne filmy v DB");
         } else {
@@ -23,10 +22,12 @@ const AllMovies = () => {
             setData(result);
           });
         }
-      })
-      .catch((err) => {
-        setError(err.message);
-      });
+      }, (err) => {setError(err.message)})
+
+      return () => {
+        unsubscribe()
+      }
+
   }, []);
 
   return (

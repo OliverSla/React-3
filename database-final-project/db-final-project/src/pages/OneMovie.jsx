@@ -24,7 +24,6 @@ const OneMovie = () => {
         setError("Nastala chyba: " + err.message);
       });
   }, []);
-
   const deleteMovie = (id) => {
     db.collection("movies").doc(id).delete();
   };
